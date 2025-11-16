@@ -2,6 +2,7 @@
   "expo": {
     "name": "Friday",
     "slug": "Friday",
+    "Scheme" : "friday",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

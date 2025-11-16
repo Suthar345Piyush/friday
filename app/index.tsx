@@ -6,10 +6,12 @@ import {
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback,
+  Alert,
 } from "react-native";
 import { TextInput } from "react-native";
 import { ElevenLabsProvider, useConversation } from "@elevenlabs/react-native";
 import type { ConversationStatus, Role } from "@elevenlabs/react-native";
+import { router } from "expo-router";
 
 const ConversationScreen = () => {
   const [isStarting, setIsStarting] = useState(false);
@@ -83,6 +85,21 @@ const ConversationScreen = () => {
     },
     onDebug: (data) => {
       console.log("🐛 Debug:", data);
+    },
+
+    clientTools : {
+      logMessage : async({message}) => {
+         console.log(message);
+         Alert.alert(message);
+      },
+
+      navigateTo : async({path}) => {
+         try{
+             router.push(path); 
+         } catch(error) {
+            console.log(error.message);
+         }
+      }
     },
   });
 
@@ -315,13 +332,8 @@ const ConversationScreen = () => {
   );
 };
 
-export default function App() {
-  return (
-    <ElevenLabsProvider>
-      <ConversationScreen />
-    </ElevenLabsProvider>
-  );
-}
+
+
 
 const styles = StyleSheet.create({
   container: {
