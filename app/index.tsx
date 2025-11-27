@@ -96,8 +96,8 @@ const ConversationScreen = () => {
       navigateTo : async({path}) => {
          try{
              router.push(path); 
-         } catch(error) {
-            console.log(error.message);
+         } catch(e) {
+            console.log(e.message);
          }
       }
     },
